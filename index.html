@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142283605-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-142283605-1');
+    </script>
+
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.478.0.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>The Alex George Experience</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Noticia+Text&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+SC:700|Lora:700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="nav">
+        <ul id="nav-list" class="container hidden-xs">
+            <li class="nav-list-item"><a href="#title">Home</a></li>
+            <li class="nav-list-item"><a href="#tour">Tour</a></li>
+            <li class="nav-list-item"><a href="#music">Music</a></li>
+            <li class="nav-list-item"><a href="#the-band">The Band</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <div onclick="changeTitlePic()" id="title">
+            <img src="showpic1-horiz.JPG" class="slideshow" id="desktop-title-pic">
+            <img src="show-alex-pose-vert.jpg" class="slideshow" id="mobile-title-pic">
+
+            <div id="title-text">
+                <h1 id="title-heading">The Alex George Experience</h1>
+
+                <ul id="name-list">
+                    <b>
+                        <li class="title-band-names">Alex George</li>
+                        <li class="title-band-names">Luke Linne</li>
+                        <li class="title-band-names">Connor Cai</li>
+                        <li class="title-band-names">Caleb Dean</li>
+                    </b>
+                </ul>
+
+            </div>
+        </div>
+
+        <section id="tour">
+
+            <!-- Stuff from last years tour-->
+                            
+            <!-- <h1 class="section-header">Tour Dates</h1> -->
+            <!-- <img src="tour-poster-new.jpg" alt="The Alex George Experience Farewell Tour" class="poster" /> -->
+            <!-- <div id="all-tour-dates"> -->
+
+                <!-- <div class="tour-date" id="live-at-deans">
+
+                    <div class="date-info">
+                        <h3>Live at Deans</h3>
+                        <p class="date">May 11 8:30 PM</p>
+
+                        <p class="location"> Crosswynd Ct <br> <span class="sommer-clarification">&nbsp;</span></p>
+
+                        <div class="show-links">
+                            <a href="https://goo.gl/maps/U8Pvkggxg5BnUffK9" target="_blank">Google Maps</a>
+                            <p class="filler">&nbsp;</p>
+                            <a href="#" onclick="return false">Sold Out!</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tour-date" id="screaming-eagle">
+                    <div class="date-info">
+                        <h3>Screaming Eagle</h3>
+
+                        <p class="date">June 22 8:15 AM </p>
+
+                        <p class="location"> DHS Football Field <br> <span class="sommer-clarification">&nbsp;</span></p>
+
+                        <div class="show-links">
+                            <a href="https://goo.gl/maps/FgqzmA97UzdEeWHi7" target="_blank">Google Maps</a>
+                            <p class="filler">&nbsp;</p>
+                            <a href="https://screamingeagle5k.weebly.com/" target="_blank">Run the 5k!</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="tour-date" id="farewell-concert">
+                    <div class="date-info">
+                        <h3>Farewell Concert</h3>
+                        <p class="date">Aug 3 7:30 PM </p>
+                        <p class="location"> Sommer Park South <br> <span class="sommer-clarification"> (Not to be confused with Sommer Park North) </span></p>
+
+                        <div class="show-links">
+                            <a href="https://goo.gl/maps/LdGkE8fgUhoAriQx5" target="_blank">Google Maps</a>
+                            <p class="filler">&nbsp;</p>
+                            <a href="https://www.evite.com/event/024EL5JDONKIGYE6OEPJP5VNL25TAU/activity" target="_blank">RSVP</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+
+            <h2 class="section-header"> UP NEXT </h2>
+            <img src="JanPoster-1.png" class="poster" id="5k-poster" />
+
+
+
+        </section>
+
+        <section id="music">
+
+            <h2 class="section-header">Music</h2>
+
+            <iframe src="https://www.youtube.com/embed/RLRw2_-a7BE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+
+
+
+            <p></p>
+            <div id="music-links">
+                <a href="https://open.spotify.com/artist/4O2p42v4FkvhyVDLuqCp2Q" target="_blank">
+                    <img src="spotify-icon.svg" alt="Spotify" class="music-icon" />
+                </a>
+                <a href="https://play.google.com/store/music/artist?id=A62w2xtzfbzva7xckjg6bysg5n4&hl=en_US" target="_blank">
+                    <img src="googleplay-icon.png" alt="Google Play" class="music-icon" />
+                </a>
+                <a href="https://www.youtube.com/channel/UCSrhaIwr05uu1rDc3-rJAHQ" target="_blank">
+                    <img src="youtube-icon.svg" alt="Youtube" class="music-icon" />
+                </a>
+
+                <a href="https://music.apple.com/us/artist/arthritis/1458686581" target="_blank">
+                    <img src="itunes-logo.png" alt="Apple Music" class="music-icon" />
+                </a>
+
+            </div>
+
+
+            <!--<input type = "text">-->
+        </section>
+
+        <section id="the-band">
+
+            <h2 class="section-header">Meet the Band</h2>
+
+            <h3 id="vote-text"> Click on a card to vote for your favorite </h3>
+
+            <img onclick="openModal('Alex George')" src="card-alex.jpg" class="card" />
+            <a title="Alex's Snapchat" href="http://snapchat.com/add/qwertyusa50" target="_blank" class="sm-link">
+                <img src="snap-icon.svg" alt="Alex's Snapchat" class="sm-icon" id="alex-snap" />
+            </a>
+            <a title="Alex's Instagram" href="http://instagram.com/alexgeorge1_2_" target="_blank" class="sm-link">
+                <img src="insta-icon.svg" alt="Alex's Instagram" class="sm-icon" id="alex-insta" />
+            </a>
+
+
+            <img onclick="openModal('Luke Linne')" src="card-luke.jpg" class="card" />
+
+            <a title="Luke's Snapchat" href="http://snapchat.com/lukelinne" target="_blank" class="sm-link">
+                <img src="snap-icon.svg" alt="Luke's Snapchat" class="sm-icon" id="luke-snap" />
+            </a>
+
+
+            <img onclick="openModal('Connor Cai')" src="card-connor.jpg" class="card" />
+
+            <a title="Connor's Snapchat" href="http://snapchat.com/add/iacronnoc" target="_blank" class="sm-link">
+                <img src="snap-icon.svg" alt="Connor's Snapchat" class="sm-icon" id="connor-snap" />
+            </a>
+            <a title="Connor's Instagram" href="http://instagram.com/caicon18" target="_blank" class="sm-link">
+                <img src="insta-icon.svg" alt="Connor's Instagram" class="sm-icon" id="connor-insta" />
+            </a>
+
+            <img onclick="openModal('Caleb Dean')" src="card-caleb.jpg" class="card" />
+
+            <a title="Caleb's Snapchat" target="_blank" href="http://snapchat.com/tocooldude" target="_blank" class="sm-link">
+                <img src="snap-icon.svg" alt="Caleb's Snapchat" class="sm-icon" id="caleb-snap" />
+            </a>
+            <a title="Caleb's Instagram" href="http://instagram.com/calebdean01" target="_blank" class="sm-link">
+                <img src="insta-icon.svg" alt="Caleb's Instagram" class="sm-icon" id="caleb-insta" />
+            </a>
+
+        </section>
+
+        <div id="vote-results">
+            <h2> Voting Results </h2>
+            <h4> Alex George:&nbsp;&nbsp;&nbsp;&nbsp;<span id="alexVoteResult"></span></h4>
+            <h4> Luke Linne:&nbsp;&nbsp;&nbsp;&nbsp; <span id="lukeVoteResult"></span></h4>
+            <h4> Connor Cai:&nbsp;&nbsp;&nbsp;&nbsp; <span id="connorVoteResult"></span></h4>
+            <h4> Caleb Dean:&nbsp;&nbsp;&nbsp;&nbsp;<span id="calebVoteResult"></span></h4>
+
+        </div>
+
+
+
+
+        <!-- Modal Box-->
+        <div id="modal">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 id="modal-text">Are you sure you want to vote for: <span id="vote-confirm-name"> </span></h2>
+                </div>
+
+                <button class="confirm button"> Confirm </button>
+                <button class="cancel button"> Cancel </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div id="footer-text">
+            <h3>Questions?</h3>
+            <p>Call or text Caleb Dean at <br> <a href="tel:13092131727"> (309) 213-1727 </a> </p>
+        </div>
+    </footer>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
