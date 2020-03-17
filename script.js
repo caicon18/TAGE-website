@@ -229,8 +229,8 @@ function changeTitlePic() {
 
     console.log(width);
     if (width > 700) {
-        var picArray = ["farewell-horiz-2", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
-        "showpic2-horiz.JPG", "showpic4-back-horiz.JPG", "show-group-pic-horiz.JPG"];
+        var picArray = ["farewell-horiz-2.jpg", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
+        "showpic2-horiz.JPG"];
         var picSRC = document.getElementById("desktop-title-pic").getAttribute("src");
     } else {
         var picArray = ["show-alex-pose-vert.jpg", "show-caleb-drumming-vert.JPG"];
