@@ -149,6 +149,7 @@ function voteSuccess() {
         var lukeVotes = document.getElementById("lukeVoteResult");
         var connorVotes = document.getElementById("connorVoteResult");
         var calebVotes = document.getElementById("calebVoteResult");
+        var rachelVotes = document.getElementById("rachelVoteResult");
 
         if (err) {
             console.log(err, err.stack);
@@ -163,13 +164,13 @@ function voteSuccess() {
 
                 switch (nameString) {
                     case "Luke Linne":
-                        lukeVotes.innerHTML = "Disqualified for cheating.";
+                        lukeVotes.innerHTML = votesString;
                         break;
                     case "Connor Cai":
                         connorVotes.innerHTML = votesString;
                         break;
                     case "Caleb Dean":
-                        calebVotes.innerHTML = "Disqualified for cheating.";
+                        calebVotes.innerHTML = votestring;
                         break;
                     case "Alex George":
                         alexVotes.innerHTML = votesString;
