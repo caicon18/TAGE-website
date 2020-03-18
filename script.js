@@ -138,6 +138,12 @@ function voteSuccess() {
                         },
 
                     },
+                    {
+                        "Name": {
+                            S: "Rachel Kocher"
+                        },
+
+                    },
                 ]
             }
         }
@@ -156,31 +162,49 @@ function voteSuccess() {
         } else {
             console.log("Get Item Success");
             responseString = JSON.stringify(data["Responses"]["VoteResults"]);
+            console.log(responseString);
+
+            console.log("ResponseString: " + responseString);
             responseArray = JSON.parse(responseString);
 
             for (var i = 0; i < responseArray.length; i++) {
                 var nameString = JSON.stringify(responseArray[i]["Name"]["S"]).replace(/\"/g, "");
                 var votesString = JSON.stringify(responseArray[i]["Votes"]["N"]).replace(/\"/g, "");
+                console.log(nameString);
+                console.log(votesString);
 
                 switch (nameString) {
                     case "Luke Linne":
+                        console.log("Luke");
                         lukeVotes.innerHTML = votesString;
                         break;
                     case "Connor Cai":
+                        console.log("Connor");
                         connorVotes.innerHTML = votesString;
                         break;
                     case "Caleb Dean":
+                        console.log("Caleb");
                         calebVotes.innerHTML = votestring;
+                        console.log("change");
                         break;
                     case "Alex George":
+                        console.log("Alex");
                         alexVotes.innerHTML = votesString;
                         break;
+                    case "Rachel Kocher":
+                        console.log("Rachel");
+                        rachelVotes.innerHTML = votesString;
+                        break;s
                 }
+                console.log("continue");
             }
         }
     })
+    console.log("test5");
     voteCastedConfirm();
+    console.log("test6");
     createCookie();
+    console.log("testfinal");
 
 }
 
@@ -224,8 +248,6 @@ function getCookie() {
     return "";
 }
 
-
-
 function changeTitlePic() {
 
     console.log(width);
@@ -244,6 +266,7 @@ function changeTitlePic() {
     var newPicSRC = "";
 
     //flip throught the array as a slideshow
+
     for (var i = 0; i < picArray.length; i++) {
 
         if (picSRC === picArray[i]) {
@@ -257,6 +280,7 @@ function changeTitlePic() {
 
     if (width > 700) {
         //if there was an error in the for loop - set the src to default
+    
         if (newPicSRC === "") {
             newPicSRC = document.getElementById("desktop-title-pic").src;
         }
@@ -265,6 +289,7 @@ function changeTitlePic() {
         document.getElementById("desktop-title-pic").src = newPicSRC;
     } else {
         //if there was an error in the for loop - set the src to default
+
         if (newPicSRC === "") {
             newPicSRC = document.getElementById("mobile-title-pic").src;
         }
