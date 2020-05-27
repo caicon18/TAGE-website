@@ -133,6 +133,7 @@ body {
     margin-right: auto;
     width: 65%;
     position: relative;
+    margin-top: 100px;
 }
 
 #all-tour-dates {
@@ -247,6 +248,10 @@ body {
         margin-top: 100px;
         border-width: 15px;
     }
+
+    .music-icon {
+        width: 25px;
+    }
 }
 
 iframe {
@@ -291,7 +296,7 @@ iframe {
 }
 
 .card {
-    width: 100%;
+    width: 70%;
     display: inline-block;
     vertical-align: top;
     border-radius: 5px;
@@ -345,7 +350,7 @@ iframe {
 footer {
     clear: both;
     position: relative;
-    height: 200px;
+    height: 150px;
     margin-top: 0px;
     background-color: rgb(40, 40, 40);
     color: white;
@@ -359,12 +364,16 @@ footer a {
 #footer-text {
     margin-left: 1.5%;
     padding-top: .25%;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 @media(max-width: 700px) {
     .section-header {
         font-size: 4em;
+    }
+
+    footer {
+        height: 200px;
     }
 }
 
