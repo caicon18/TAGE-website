@@ -161,17 +161,19 @@ function voteSuccess() {
             console.log(err, err.stack);
         } else {
             console.log("Get Item Success");
-            responseString = JSON.stringify(data["Responses"]["VoteResults"]);
-            console.log(responseString);
+            console.log("Data: ");
+            console.log(data["Responses"]["VoteResults"]);
+            var response = data["Responses"]['VoteResults'];
+            var nameString = "";
+            var votesString = "";
+            console.log("length: " + response.length); 
 
-            console.log("ResponseString: " + responseString);
-            responseArray = JSON.parse(responseString);
-
-            for (var i = 0; i < responseArray.length; i++) {
-                var nameString = JSON.stringify(responseArray[i]["Name"]["S"]).replace(/\"/g, "");
-                var votesString = JSON.stringify(responseArray[i]["Votes"]["N"]).replace(/\"/g, "");
-                console.log(nameString);
-                console.log(votesString);
+            for (var i = 0; i < response.length; i++) {
+                console.log("i: " + i);
+                nameString = response[i].Name.S;
+                votesString = response[i].Votes.N;
+                console.log("nameString: " + nameString);
+                console.log("votesString: " + votesString);
 
                 switch (nameString) {
                     case "Luke Linne":
@@ -179,22 +181,21 @@ function voteSuccess() {
                         lukeVotes.innerHTML = votesString;
                         break;
                     case "Connor Cai":
-                        console.log("Connor");
+                        console.log("Luke");
                         connorVotes.innerHTML = votesString;
                         break;
                     case "Caleb Dean":
-                        console.log("Caleb");
-                        calebVotes.innerHTML = votestring;
-                        console.log("change");
+                        console.log("calreb");
+                        calebVotes.innerHTML = votesString;
                         break;
                     case "Alex George":
-                        console.log("Alex");
+                        console.log("aelx");
                         alexVotes.innerHTML = votesString;
                         break;
                     case "Rachel Kocher":
-                        console.log("Rachel");
+                        console.log("Rqachel");
                         rachelVotes.innerHTML = votesString;
-                        break;s
+                        break;
                 }
                 console.log("continue");
             }
