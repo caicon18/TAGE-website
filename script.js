@@ -138,6 +138,12 @@ function voteSuccess() {
                         },
 
                     },
+                    {
+                        "Name": {
+                            S: "Rachel Kocher"
+                        },
+
+                    },
                 ]
             }
         }
@@ -149,37 +155,57 @@ function voteSuccess() {
         var lukeVotes = document.getElementById("lukeVoteResult");
         var connorVotes = document.getElementById("connorVoteResult");
         var calebVotes = document.getElementById("calebVoteResult");
+        var rachelVotes = document.getElementById("rachelVoteResult");
 
         if (err) {
             console.log(err, err.stack);
         } else {
             console.log("Get Item Success");
-            responseString = JSON.stringify(data["Responses"]["VoteResults"]);
-            responseArray = JSON.parse(responseString);
+            console.log("Data: ");
+            console.log(data["Responses"]["VoteResults"]);
+            var response = data["Responses"]['VoteResults'];
+            var nameString = "";
+            var votesString = "";
+            console.log("length: " + response.length); 
 
-            for (var i = 0; i < responseArray.length; i++) {
-                var nameString = JSON.stringify(responseArray[i]["Name"]["S"]).replace(/\"/g, "");
-                var votesString = JSON.stringify(responseArray[i]["Votes"]["N"]).replace(/\"/g, "");
+            for (var i = 0; i < response.length; i++) {
+                console.log("i: " + i);
+                nameString = response[i].Name.S;
+                votesString = response[i].Votes.N;
+                console.log("nameString: " + nameString);
+                console.log("votesString: " + votesString);
 
                 switch (nameString) {
                     case "Luke Linne":
-                        lukeVotes.innerHTML = "Disqualified for cheating.";
+                        console.log("Luke");
+                        lukeVotes.innerHTML = votesString;
                         break;
                     case "Connor Cai":
+                        console.log("Luke");
                         connorVotes.innerHTML = votesString;
                         break;
                     case "Caleb Dean":
-                        calebVotes.innerHTML = "Disqualified for cheating.";
+                        console.log("calreb");
+                        calebVotes.innerHTML = votesString;
                         break;
                     case "Alex George":
+                        console.log("aelx");
                         alexVotes.innerHTML = votesString;
                         break;
+                    case "Rachel Kocher":
+                        console.log("Rqachel");
+                        rachelVotes.innerHTML = votesString;
+                        break;
                 }
+                console.log("continue");
             }
         }
     })
+    console.log("test5");
     voteCastedConfirm();
+    console.log("test6");
     createCookie();
+    console.log("testfinal");
 
 }
 
@@ -223,14 +249,12 @@ function getCookie() {
     return "";
 }
 
-
-
 function changeTitlePic() {
 
     console.log(width);
     if (width > 700) {
-        var picArray = ["farewell-horiz-2", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
-        "showpic2-horiz.JPG", "showpic4-back-horiz.JPG", "show-group-pic-horiz.JPG"];
+        var picArray = ["farewell-horiz-2.jpg", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
+        "showpic2-horiz.JPG"];
         var picSRC = document.getElementById("desktop-title-pic").getAttribute("src");
     } else {
         var picArray = ["show-alex-pose-vert.jpg", "show-caleb-drumming-vert.JPG"];
@@ -243,6 +267,7 @@ function changeTitlePic() {
     var newPicSRC = "";
 
     //flip throught the array as a slideshow
+
     for (var i = 0; i < picArray.length; i++) {
 
         if (picSRC === picArray[i]) {
@@ -256,6 +281,7 @@ function changeTitlePic() {
 
     if (width > 700) {
         //if there was an error in the for loop - set the src to default
+    
         if (newPicSRC === "") {
             newPicSRC = document.getElementById("desktop-title-pic").src;
         }
@@ -264,6 +290,7 @@ function changeTitlePic() {
         document.getElementById("desktop-title-pic").src = newPicSRC;
     } else {
         //if there was an error in the for loop - set the src to default
+
         if (newPicSRC === "") {
             newPicSRC = document.getElementById("mobile-title-pic").src;
         }
