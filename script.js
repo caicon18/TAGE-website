@@ -110,7 +110,6 @@ confirmBtn.onclick = function() {
     });
 }
 
-
 function voteSuccess() {
     console.log("voteSuccess()");
     var params = {
