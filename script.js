@@ -9,7 +9,7 @@ var myConfig = new AWS.Config({
 AWS.config.update({ region: 'us-east-1' });
 AWS.config.credentials = myCredentials;
 
-var width = document.documentElement.clientWidth;
+var width = document.documentElement.clientWidth; //size of the screen
 var testVar = 0;
 
 var modal = document.getElementById("modal");
@@ -250,23 +250,29 @@ function getCookie() {
 
 function changeTitlePic() {
 
+    var newPicSRC = ""; //path for the new image
+    var picSRC = ""; //path for the old image
+    var picArray = []; //array of possible images, changes based on screen size
+
     console.log(width);
     if (width > 700) {
-        var picArray = ["farewell-horiz-2.jpg", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
+        picArray = ["farewell-horiz-2.jpg", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
         "showpic2-horiz.JPG"];
-        var picSRC = document.getElementById("desktop-title-pic").getAttribute("src");
+        picSRC = document.getElementById("desktop-title-pic").getAttribute("src");
     } else {
-        var picArray = ["show-alex-pose-vert.jpg", "show-caleb-drumming-vert.JPG"];
-        var picSRC = document.getElementById("mobile-title-pic").getAttribute("src");
-
+        picArray = ["show-alex-pose-vert.jpg", "show-caleb-drumming-vert.JPG"];
+        picSRC = document.getElementById("mobile-title-pic").getAttribute("src");
     }
 
+    //put in folder path
+    for (var i = 0; i < picArray.length; i++) {
+        picArray[i] = "images/" + picArray[i];
+    }
+
+    
     console.log(picSRC);
 
-    var newPicSRC = "";
-
-    //flip throught the array as a slideshow
-
+    //flip throught the array as a slideshow and set newPicSRC
     for (var i = 0; i < picArray.length; i++) {
 
         if (picSRC === picArray[i]) {
