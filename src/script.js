@@ -1,3 +1,15 @@
+import Amplify, { Auth } from 'aws-amplify';
+
+const amplifyConfig = {
+    'aws_appsync_graphqlEndpoint': 'https://74enmikpsnapdkqvswkwazhvvi.appsync-api.us-east-1.amazonaws.com/graphql',
+    'aws_appsync_region': 'us-east-1',
+    'aws_appsync_authenticationType': 'API_KEY',
+    'aws_appsync_apiKey': 'da2-4gnvoc5mxrbgvbwb4u3pbqt3e4',
+    
+}
+
+Amplify.configure(amplifyConfig);
+
 var myCredentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: "us-east-1:3c57bd44-6449-4d55-a4ae-2c7621c181e0"
 });
@@ -275,7 +287,7 @@ function changeTitlePic() {
 
     //put in folder path
     for (var i = 0; i < picArray.length; i++) {
-        picArray[i] = "images/" + picArray[i];
+        picArray[i] = "../images/" + picArray[i];
     }
 
     
