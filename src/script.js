@@ -1,4 +1,7 @@
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify, { Auth } from "aws-amplify";
+//import { API, graphqlOperation } from "aws-amplify";
+//import * as mutations from "./graphql/mutations";
+//import * as queries from './graphql/queries';
 
 const amplifyConfig = {
     'aws_appsync_graphqlEndpoint': 'https://74enmikpsnapdkqvswkwazhvvi.appsync-api.us-east-1.amazonaws.com/graphql',
@@ -8,7 +11,7 @@ const amplifyConfig = {
     
 }
 
-Amplify.configure(amplifyConfig);
+//Amplify.configure(amplifyConfig);
 
 var myCredentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: "us-east-1:3c57bd44-6449-4d55-a4ae-2c7621c181e0"
@@ -47,7 +50,13 @@ var voteCastedBool = false;
 
 var voteResults = document.getElementById("vote-results");
 
+//selection box that opens when someone tries to vote
 function openModal(person) {
+    // // test
+    // console.log("test");
+    // const getVote = await API.graphql(graphqlOperation(queries.getVote, {"Name": "Connor Cai"}));
+    // console.log(getVote);
+
     console.log("openModal()");
     voteCastedBool = getCookie();
 
@@ -64,7 +73,7 @@ function openModal(person) {
         voteConfirmName.innerHTML = person;
         voteTarget = person;
     } else {
-        console.log("use has already voted");
+        console.log("user has already voted");
         voteSuccess();
     }
 }
@@ -229,6 +238,7 @@ function voteSuccess() {
 
 }
 
+//when someone tries to confirm a vote
 function voteCastedConfirm() {
     console.log("voteCastedConfirm()");
     modal.style.display = "block";
