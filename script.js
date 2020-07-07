@@ -9,6 +9,15 @@ var myConfig = new AWS.Config({
 AWS.config.update({ region: 'us-east-1' });
 AWS.config.credentials = myCredentials;
 
+/* new cognito setup */
+
+// AWS.config.region = 'us-east-1';
+// AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+//     IdentityPoolId: "us-east-1:5efd8689-9ffa-49be-bc8e-6d460669f696"
+// })
+
+//https://thealexgeorgeexperience.auth.us-east-1.amazoncognito.com/login?client_id=4adb9pbbfed1d1safhsrjs7h38&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://thealexgeorgeexperience.com
+
 var width = document.documentElement.clientWidth; //size of the screen
 var testVar = 0;
 
