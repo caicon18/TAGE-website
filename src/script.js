@@ -45,7 +45,7 @@ var modalText = document.getElementById("modal-text");
 
 var voteTarget;
 var dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
-
+var sns = new AWS.SNS({apiVersion: '2010-03-31'});
 var voteCastedBool = false;
 
 var voteResults = document.getElementById("vote-results");
@@ -335,4 +335,36 @@ function changeTitlePic() {
     }
 
 
+}
+
+function sendMessage() {
+    console.log("sendMessage()");
+    var textArea = document.getElementById("text-area");
+    var textValue = textArea.value;
+    console.log("text value: " + textValue);
+
+    if (textArea === "") {
+        console.log("text is empty");
+        return;
+    }
+
+    // text are not empty
+
+    var params = {
+        Message: textValue, /* required */
+        TopicArn: 'arn:aws:sns:us-east-1:497674167929:TAGE'
+      };
+    sns.publish(params, function(err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else     console.log(data);           // successful response
+    });
+
+    textArea.value = "";
+    modal.style.display = "block";
+    modalText.innerHTML = "Message Sent!";
+    cancelBtn.style.display = "none";
+    confirmBtn.style.display = "none";
+    setTimeout(function() {
+        modal.style.display = "none";
+    }, 1500);
 }
