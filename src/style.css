@@ -195,6 +195,17 @@ iframe {
     margin-bottom: 300px;
 }
 
+#insta-post {
+    display: block;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    position: static;
+    padding-left: 6%;
+    margin-top: 100px;
+    margin-bottom: 300px;
+}
+
 .date-info {
     padding-top: 20%;
 }
