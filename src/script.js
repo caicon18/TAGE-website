@@ -1,7 +1,7 @@
-import Amplify, { Auth } from "aws-amplify";
-import { API, graphqlOperation } from "aws-amplify";
-import * as mutations from "./graphql/mutations";
-import * as queries from './graphql/queries';
+// import Amplify, { Auth } from "aws-amplify";
+// import { API, graphqlOperation } from "aws-amplify";
+// import * as mutations from "./graphql/mutations";
+// import * as queries from './graphql/queries';
 
 const amplifyConfig = {
     'aws_appsync_graphqlEndpoint': 'https://74enmikpsnapdkqvswkwazhvvi.appsync-api.us-east-1.amazonaws.com/graphql',
