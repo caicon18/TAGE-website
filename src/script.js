@@ -1,3 +1,18 @@
+// import Amplify, { Auth } from "aws-amplify";
+// import { API, graphqlOperation } from "aws-amplify";
+// import * as mutations from "./graphql/mutations";
+// import * as queries from './graphql/queries';
+
+const amplifyConfig = {
+    'aws_appsync_graphqlEndpoint': 'https://74enmikpsnapdkqvswkwazhvvi.appsync-api.us-east-1.amazonaws.com/graphql',
+    'aws_appsync_region': 'us-east-1',
+    'aws_appsync_authenticationType': 'API_KEY',
+    'aws_appsync_apiKey': 'da2-4gnvoc5mxrbgvbwb4u3pbqt3e4',
+    
+}
+
+//Amplify.configure(amplifyConfig);
+
 var myCredentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: "us-east-1:3c57bd44-6449-4d55-a4ae-2c7621c181e0"
 });
@@ -9,7 +24,16 @@ var myConfig = new AWS.Config({
 AWS.config.update({ region: 'us-east-1' });
 AWS.config.credentials = myCredentials;
 
-var width = document.documentElement.clientWidth;
+/* new cognito setup */
+
+// AWS.config.region = 'us-east-1';
+// AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+//     IdentityPoolId: "us-east-1:5efd8689-9ffa-49be-bc8e-6d460669f696"
+// })
+
+//https://thealexgeorgeexperience.auth.us-east-1.amazoncognito.com/login?client_id=4adb9pbbfed1d1safhsrjs7h38&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://thealexgeorgeexperience.com
+
+var width = document.documentElement.clientWidth; //size of the screen
 var testVar = 0;
 
 var modal = document.getElementById("modal");
@@ -21,12 +45,18 @@ var modalText = document.getElementById("modal-text");
 
 var voteTarget;
 var dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
-
+var sns = new AWS.SNS({apiVersion: '2010-03-31'});
 var voteCastedBool = false;
 
 var voteResults = document.getElementById("vote-results");
 
+//selection box that opens when someone tries to vote
 function openModal(person) {
+    // // test
+    // console.log("test");
+    // const getVote = await API.graphql(graphqlOperation(queries.getVote, {"Name": "Connor Cai"}));
+    // console.log(getVote);
+
     console.log("openModal()");
     voteCastedBool = getCookie();
 
@@ -43,7 +73,7 @@ function openModal(person) {
         voteConfirmName.innerHTML = person;
         voteTarget = person;
     } else {
-        console.log("use has already voted");
+        console.log("user has already voted");
         voteSuccess();
     }
 }
@@ -109,7 +139,6 @@ confirmBtn.onclick = function() {
         }
     });
 }
-
 
 function voteSuccess() {
     console.log("voteSuccess()");
@@ -209,6 +238,7 @@ function voteSuccess() {
 
 }
 
+//when someone tries to confirm a vote
 function voteCastedConfirm() {
     console.log("voteCastedConfirm()");
     modal.style.display = "block";
@@ -251,23 +281,28 @@ function getCookie() {
 
 function changeTitlePic() {
 
+    var newPicSRC = ""; //path for the new image
+    var picSRC = ""; //path for the old image
+    var picArray = []; //array of possible images, changes based on screen size
+
     console.log(width);
     if (width > 700) {
-        var picArray = ["farewell-horiz-2.jpg", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
+        picArray = ["farewell-horiz-2.jpg", "showpic1-horiz.JPG", "farewell-horiz-1.jpg", "5k-everyone-2.JPG", 
         "showpic2-horiz.JPG"];
-        var picSRC = document.getElementById("desktop-title-pic").getAttribute("src");
+        picSRC = document.getElementById("desktop-title-pic").getAttribute("src");
     } else {
-        var picArray = ["show-alex-pose-vert.jpg", "show-caleb-drumming-vert.JPG"];
-        var picSRC = document.getElementById("mobile-title-pic").getAttribute("src");
+        picArray = ["show-alex-pose-vert.jpg", "show-caleb-drumming-vert.JPG"];
+        picSRC = document.getElementById("mobile-title-pic").getAttribute("src");
+    }
 
+    //put in folder path
+    for (var i = 0; i < picArray.length; i++) {
+        picArray[i] = "../images/" + picArray[i];
     }
 
     console.log(picSRC);
 
-    var newPicSRC = "";
-
-    //flip throught the array as a slideshow
-
+    //flip throught the array as a slideshow and set newPicSRC
     for (var i = 0; i < picArray.length; i++) {
 
         if (picSRC === picArray[i]) {
@@ -300,4 +335,36 @@ function changeTitlePic() {
     }
 
 
+}
+
+function sendMessage() {
+    console.log("sendMessage()");
+    var textArea = document.getElementById("text-area");
+    var textValue = textArea.value;
+    console.log("text value: " + textValue);
+
+    if (textArea === "") {
+        console.log("text is empty");
+        return;
+    }
+
+    // text are not empty
+
+    var params = {
+        Message: textValue, /* required */
+        TopicArn: 'arn:aws:sns:us-east-1:497674167929:TAGE'
+      };
+    sns.publish(params, function(err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else     console.log(data);           // successful response
+    });
+
+    textArea.value = "";
+    modal.style.display = "block";
+    modalText.innerHTML = "Message Sent!";
+    cancelBtn.style.display = "none";
+    confirmBtn.style.display = "none";
+    setTimeout(function() {
+        modal.style.display = "none";
+    }, 1500);
 }

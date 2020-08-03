@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"tagewebsite01c65220": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

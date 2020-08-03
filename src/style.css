@@ -17,7 +17,6 @@ body {
     text-align: center;
 }
 
-
 /* NAV bar */
 
 #nav-list {
@@ -57,7 +56,7 @@ body {
     color: white;
     margin-bottom: -5px;
     background-color: black;
-    padding-bottom: 80px;
+    /* padding-bottom: 80px; */
 }
 
 #mobile-title-pic {
@@ -115,6 +114,79 @@ body {
     }
 }
 
+/* Music */
+
+#music {
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 20px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+#album-cover {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 200px;
+    width: 50%;
+}
+
+@media(max-width: 700px) {
+    #album-cover {
+        width: 90%;
+    }
+}
+
+.music-icon {
+    width: 60px;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+@media(max-width: 700px) {
+    #music {
+        margin: 20px;
+        margin-top: 100px;
+        border-width: 15px;
+    }
+
+    .music-icon {
+        width: 25px;
+    }
+}
+
+iframe {
+    width: 1050px;
+    height: 590.625px;
+}
+
+@media(max-width: 1300px) {
+    iframe {
+        width: 672px;
+        height: 378px;
+    }
+}
+
+@media(max-width: 900px) {
+    iframe {
+        width: 350px;
+        height: 196.875px;
+    }
+}
+
+@media(max-width: 400px) {
+    iframe {
+        width: 175px;
+        height: 98.437px;
+    }
+}
 
 /*Tour Stuff */
 
@@ -137,21 +209,15 @@ body {
     margin-bottom: 300px;
 }
 
-#all-tour-dates {
-    text-align: center;
-}
-
-.tour-date {
-    width: 18%;
-    font-size: 1.4vw;
-    margin: 2%;
-    background-color: white;
-    color: black;
-    display: inline-block;
-    left: auto;
-    right: auto;
-    vertical-align: top;
-    position: relative;
+#insta-post {
+    display: block;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    position: static;
+    padding-left: 6%;
+    margin-top: 100px;
+    margin-bottom: 300px;
 }
 
 .date-info {
@@ -221,63 +287,6 @@ body {
     }
     .filler {
         display: none;
-    }
-}
-
-
-/* Music */
-
-#music {
-    text-align: center;
-    margin: 100px;
-    margin-top: 200px;
-    border-style: solid;
-    border-width: 20px;
-}
-
-.music-icon {
-    width: 50px;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 2.5%;
-    margin-top: 2.5%;
-}
-
-@media(max-width: 700px) {
-    #music {
-        margin: 20px;
-        margin-top: 100px;
-        border-width: 15px;
-    }
-
-    .music-icon {
-        width: 25px;
-    }
-}
-
-iframe {
-    width: 1050px;
-    height: 590.625px;
-}
-
-@media(max-width: 1300px) {
-    iframe {
-        width: 672px;
-        height: 378px;
-    }
-}
-
-@media(max-width: 900px) {
-    iframe {
-        width: 350px;
-        height: 196.875px;
-    }
-}
-
-@media(max-width: 400px) {
-    iframe {
-        width: 175px;
-        height: 98.437px;
     }
 }
 
@@ -366,7 +375,17 @@ footer a {
     margin-left: 1.5%;
     padding-top: .25%;
     font-size: 1em;
+    float: left;
 }
+
+#contact-form{
+    float: right;
+    margin-right: 15%;
+    font-size: 2em;
+    padding: 10px;
+}
+
+
 
 @media(max-width: 700px) {
     .section-header {
