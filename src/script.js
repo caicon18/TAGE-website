@@ -1,3 +1,18 @@
+// import Amplify, { Auth } from "aws-amplify";
+// import { API, graphqlOperation } from "aws-amplify";
+// import * as mutations from "./graphql/mutations";
+// import * as queries from './graphql/queries';
+
+const amplifyConfig = {
+    'aws_appsync_graphqlEndpoint': 'https://74enmikpsnapdkqvswkwazhvvi.appsync-api.us-east-1.amazonaws.com/graphql',
+    'aws_appsync_region': 'us-east-1',
+    'aws_appsync_authenticationType': 'API_KEY',
+    'aws_appsync_apiKey': 'da2-4gnvoc5mxrbgvbwb4u3pbqt3e4',
+    
+}
+
+//Amplify.configure(amplifyConfig);
+
 var myCredentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: "us-east-1:3c57bd44-6449-4d55-a4ae-2c7621c181e0"
 });
@@ -30,12 +45,18 @@ var modalText = document.getElementById("modal-text");
 
 var voteTarget;
 var dynamodb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
-
+var sns = new AWS.SNS({apiVersion: '2010-03-31'});
 var voteCastedBool = false;
 
 var voteResults = document.getElementById("vote-results");
 
+//selection box that opens when someone tries to vote
 function openModal(person) {
+    // // test
+    // console.log("test");
+    // const getVote = await API.graphql(graphqlOperation(queries.getVote, {"Name": "Connor Cai"}));
+    // console.log(getVote);
+
     console.log("openModal()");
     voteCastedBool = getCookie();
 
@@ -52,7 +73,7 @@ function openModal(person) {
         voteConfirmName.innerHTML = person;
         voteTarget = person;
     } else {
-        console.log("use has already voted");
+        console.log("user has already voted");
         voteSuccess();
     }
 }
@@ -217,6 +238,7 @@ function voteSuccess() {
 
 }
 
+//when someone tries to confirm a vote
 function voteCastedConfirm() {
     console.log("voteCastedConfirm()");
     modal.style.display = "block";
@@ -275,10 +297,9 @@ function changeTitlePic() {
 
     //put in folder path
     for (var i = 0; i < picArray.length; i++) {
-        picArray[i] = "images/" + picArray[i];
+        picArray[i] = "../images/" + picArray[i];
     }
 
-    
     console.log(picSRC);
 
     //flip throught the array as a slideshow and set newPicSRC
@@ -314,4 +335,36 @@ function changeTitlePic() {
     }
 
 
+}
+
+function sendMessage() {
+    console.log("sendMessage()");
+    var textArea = document.getElementById("text-area");
+    var textValue = textArea.value;
+    console.log("text value: " + textValue);
+
+    if (textArea === "") {
+        console.log("text is empty");
+        return;
+    }
+
+    // text are not empty
+
+    var params = {
+        Message: textValue, /* required */
+        TopicArn: 'arn:aws:sns:us-east-1:497674167929:TAGE'
+      };
+    sns.publish(params, function(err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else     console.log(data);           // successful response
+    });
+
+    textArea.value = "";
+    modal.style.display = "block";
+    modalText.innerHTML = "Message Sent!";
+    cancelBtn.style.display = "none";
+    confirmBtn.style.display = "none";
+    setTimeout(function() {
+        modal.style.display = "none";
+    }, 1500);
 }
