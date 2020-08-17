@@ -129,11 +129,11 @@ body {
 
 
 #album-cover {
-    display: block;
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 200px;
-    width: 50%;
+    width: 40%;
 }
 
 @media(max-width: 700px) {
