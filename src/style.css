@@ -1,0 +1,42 @@
+body {
+    margin: 0px;
+    font-size: 16px;
+    height: 100%;
+    background-color: black;
+}
+
+.section-header {
+    font-family: 'Alegreya', serif;
+    font-size: 6em;
+    text-align: center;
+}
+
+/*Title stuff*/
+
+#title {
+    position: relative;
+    color: white;
+    margin-bottom: -5px;
+    background-color: black;
+    margin-top: 10px;
+    margin-left: 5%;
+}
+
+#mobile-title-pic {
+    display: none;
+}
+
+.slideshow {
+    width: 100%;
+}
+
+#title-text {
+    text-shadow: -1.2px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1.2px black;
+    width: 100%;
+    font-size: 2em; 
+    text-align: left;
+    position: absolute;
+    color: white;
+    top: -5%;
+    font-family: 'Lora', serif;
+}
