@@ -2,7 +2,8 @@ body {
     margin: 0px;
     font-size: 16px;
     height: 100%;
-    background-color: white;
+    background-image: url('../images/background-wood.jpg');
+    background-size: cover;
 }
 
 .section-header {
@@ -17,7 +18,8 @@ body {
     position: relative;
     color: white;
     padding-bottom: -5px;
-    background-color: black;
+    background-color: rgb(32, 0, 0);
+    /* background-image: url('../images/background-dark-wood.jpg'); */
     padding-top: 10px;
     padding-left: 5%;
     height: 90px;
@@ -25,7 +27,7 @@ body {
 
 #logo {
     position: relative;
-    width: 5%;
+    width: 3%;
     margin-left: 90%;
     top: -80%;
 
@@ -43,6 +45,17 @@ body {
     margin-bottom: -7px;
 }
 
+@media(max-width: 700px) {
+    #title-text {
+        font-size: 1.3em;
+    }
+
+    #logo {
+        width: 8%;
+        top: -60%;
+    }
+}
+
 #title-subtitle {
     text-shadow: -1.2px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1.2px black;
     font-size: 0.6em; 
@@ -54,4 +67,31 @@ body {
 
 #title-subtitle:hover {
     color: gray;
+}
+
+.merch {
+    text-shadow: -1.2px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1.2px black;
+    width: 50%;
+    font-family: 'Lora', serif;
+    border-style: solid;
+    border-color: rgb(32, 0, 0);
+} 
+
+.merch-text {
+    color: white;
+    
+}
+
+table {
+    width: 100%;
+    padding-top: 8%;
+}
+
+th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#bottom-text {
+    text-align: center;
 }
